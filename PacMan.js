@@ -40,7 +40,6 @@ let reverseY = false;
 
 function update() {
   pacMen.forEach((item) => {
-    checkCollisions(item);
     if (item.reverseX){
     item.position.x -= item.velocity.x;
     }else {
