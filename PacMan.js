@@ -40,19 +40,9 @@ let reverseY = false;
 
 function update() {
   pacMen.forEach((item) => {
-    if (item.reverseX){
-    item.position.x -= item.velocity.x;
-    }else {
     item.position.x += item.velocity.x;
-    }
-    if (item.reverseY) {
-      item.position.y -= item.velocity.y;
-    }else {
-  item.position.y += item.velocity.y;
-    }
-    item.newimg.style.left = item.position.x ;
-    item.newimg.style.top = item.position.y ;
-  });
+
+   item.position.y += item.velocity.y;}
   setTimeout(update, 20);
 }
 
@@ -61,14 +51,10 @@ function checkCollisions(item) {
   let leftBound = 0;
   let topBound = 0;
   let bottomBound = window.innerHeight - item.newimg.height;
+if (item.position.x + item.velocity.x + item.newimg.width > window.innerWidth ||  item.position.x + item.velocity.x < 0 ){
 
-  if (item.position.x > rightBound || item.position.x <  leftBound) {
-    item.reverseX = !item.reverseX;
-  }
-
-  if (item.position.y > bottomBound || item.position.y < topBound){
-    item.reverseY = !item.reverseY;
-  }
+    item.velocity.x = -item.velocity.x;
+}
 }
 
 function makeOne() {
